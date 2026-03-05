@@ -7,7 +7,7 @@ LM-CC measures code complexity from the LLM's perspective. Based on [arXiv:2602.
 ## Installation
 
 ```bash
-composer require lm-cc/lm-cc
+composer require k-kinzal/lm-cc-php
 ```
 
 Requires an LLM backend:
@@ -72,6 +72,12 @@ See [docs/ci-integration.md](docs/ci-integration.md) for full examples.
 - [Installation](docs/installation.md) — Backend setup
 - [Usage](docs/usage.md) — CLI reference
 - [CI Integration](docs/ci-integration.md) — Pipeline setup
+
+## Acknowledgments
+
+This tool is an implementation of the LM-CC metric proposed in:
+
+> Mingjie Liu, Zichao Li, Chengyu Huang, Yihong Dong, Yongqiang Chen, Shuijing He, Bo Zheng, and Ge Li. *LM-CC: Language Model Code Complexity — A New Metric from the LLM's Perspective.* [arXiv:2602.07882](https://arxiv.org/abs/2602.07882), 2025.
 
 ## License
 

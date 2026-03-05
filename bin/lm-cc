@@ -23,11 +23,13 @@ if (!$autoloaderFound) {
     exit(2);
 }
 
+use Composer\InstalledVersions;
 use Lmcc\Command\AnalyzeCommand;
 use Lmcc\Command\InitCommand;
 use Symfony\Component\Console\Application;
 
-$application = new Application('lm-cc', '0.1.0');
+$version = InstalledVersions::getPrettyVersion('k-kinzal/lm-cc-php') ?? 'dev';
+$application = new Application('lm-cc', $version);
 $application->add(new AnalyzeCommand());
 $application->add(new InitCommand());
 $application->setDefaultCommand('analyze');

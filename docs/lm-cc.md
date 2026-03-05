@@ -49,4 +49,4 @@ LM-CC correlates at **r = -0.92 to -0.97** with LLM task success. Lowering LM-CC
 
 ## Reference
 
-arXiv:2602.07882
+Mingjie Liu, Zichao Li, Chengyu Huang, Yihong Dong, Yongqiang Chen, Shuijing He, Bo Zheng, and Ge Li. *LM-CC: Language Model Code Complexity — A New Metric from the LLM's Perspective.* [arXiv:2602.07882](https://arxiv.org/abs/2602.07882), 2025.

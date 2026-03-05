@@ -1,11 +1,24 @@
 {
-    "name": "lm-cc/lm-cc",
+    "name": "k-kinzal/lm-cc-php",
     "description": "LM-CC: Language Model Code Complexity metric for PHP",
     "type": "library",
     "license": "MIT",
     "keywords": ["code-complexity", "llm", "static-analysis", "ci", "code-quality"],
+    "authors": [
+        {
+            "name": "kinzal",
+            "homepage": "https://github.com/k-kinzal"
+        }
+    ],
+    "homepage": "https://github.com/k-kinzal/lm-cc-php",
+    "support": {
+        "issues": "https://github.com/k-kinzal/lm-cc-php/issues",
+        "source": "https://github.com/k-kinzal/lm-cc-php"
+    },
     "require": {
         "php": ">=8.1",
+        "ext-json": "*",
+        "ext-tokenizer": "*",
         "symfony/console": "^6.0 || ^7.0",
         "symfony/http-client": "^6.0 || ^7.0",
         "symfony/yaml": "^6.0 || ^7.0",

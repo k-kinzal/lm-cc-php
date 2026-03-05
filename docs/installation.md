@@ -4,10 +4,10 @@
 
 ```bash
 # As a project dependency
-composer require lm-cc/lm-cc
+composer require k-kinzal/lm-cc-php
 
 # Or globally
-composer global require lm-cc/lm-cc
+composer global require k-kinzal/lm-cc-php
 ```
 
 ## LLM Backend Setup

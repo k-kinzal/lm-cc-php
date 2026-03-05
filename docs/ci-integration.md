@@ -66,7 +66,7 @@ This project provides a reusable GitHub Actions workflow:
 ```yaml
 jobs:
   lm-cc:
-    uses: lm-cc/lm-cc/.github/workflows/lm-cc.yml@main
+    uses: k-kinzal/lm-cc-php/.github/workflows/lm-cc.yml@main
     with:
       threshold: '50.0'
       paths: 'src/'

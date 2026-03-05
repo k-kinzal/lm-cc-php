@@ -53,7 +53,7 @@ jobs:
           coverage: none
 
       - name: Install lm-cc
-        run: composer global require lm-cc/lm-cc
+        run: composer global require k-kinzal/lm-cc-php
 
       - name: Pull model (Ollama)
         if: inputs.backend == 'ollama'
