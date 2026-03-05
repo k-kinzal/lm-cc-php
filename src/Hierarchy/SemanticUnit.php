@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Lmcc\Hierarchy;
 
-final readonly class SemanticUnit
+final class SemanticUnit
 {
     public function __construct(
-        public int $index,
-        public string $content,
-        public int $indentLevel,
-        public int $startOffset,
-        public int $endOffset,
-        public int $startLine,
-        public int $endLine,
+        public readonly int $index,
+        public readonly string $content,
+        public readonly int $indentLevel,
+        public readonly int $startOffset,
+        public readonly int $endOffset,
+        public readonly int $startLine,
+        public readonly int $endLine,
     ) {
     }
 }

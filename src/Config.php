@@ -6,22 +6,22 @@ namespace Lmcc;
 
 use Symfony\Component\Yaml\Yaml;
 
-final readonly class Config
+final class Config
 {
     /**
      * @param string[] $exclude
      */
     public function __construct(
-        public string $backend = 'ollama',
-        public string $model = 'llama3',
-        public string $baseUrl = 'http://localhost:11434',
-        public string $apiKey = '',
-        public float $alpha = 0.8,
-        public ?float $tauOverride = null,
-        public float $percentile = 67.0,
-        public ?float $threshold = null,
-        public string $format = 'text',
-        public array $exclude = ['vendor/*', 'tests/*'],
+        public readonly string $backend = 'ollama',
+        public readonly string $model = 'llama3',
+        public readonly string $baseUrl = 'http://localhost:11434',
+        public readonly string $apiKey = '',
+        public readonly float $alpha = 0.8,
+        public readonly ?float $tauOverride = null,
+        public readonly float $percentile = 67.0,
+        public readonly ?float $threshold = null,
+        public readonly string $format = 'text',
+        public readonly array $exclude = ['vendor/*', 'tests/*'],
     ) {
     }
 

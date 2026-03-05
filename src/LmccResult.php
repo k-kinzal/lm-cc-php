@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Lmcc;
 
-final readonly class LmccResult
+final class LmccResult
 {
     public function __construct(
-        public string $filePath,
-        public float $score,
-        public float $totalBranch,
-        public float $totalCompLevel,
-        public int $maxCompLevel,
-        public float $avgCompLevel,
-        public int $maxBranch,
-        public float $avgBranch,
-        public int $nodeCount,
-        public int $tokenCount,
-        public float $tau,
-        public int $boundaryCount,
-        public int $unitCount,
+        public readonly string $filePath,
+        public readonly float $score,
+        public readonly float $totalBranch,
+        public readonly float $totalCompLevel,
+        public readonly int $maxCompLevel,
+        public readonly float $avgCompLevel,
+        public readonly int $maxBranch,
+        public readonly float $avgBranch,
+        public readonly int $nodeCount,
+        public readonly int $tokenCount,
+        public readonly float $tau,
+        public readonly int $boundaryCount,
+        public readonly int $unitCount,
     ) {
     }
 

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Lmcc\Llm;
 
-final readonly class TokenEntropy
+final class TokenEntropy
 {
     public function __construct(
-        public string $token,
-        public float $entropy,
-        public int $offset,
+        public readonly string $token,
+        public readonly float $entropy,
+        public readonly int $offset,
     ) {
     }
 }
