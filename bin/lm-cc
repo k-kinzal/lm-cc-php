@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+// Find the Composer autoloader
+$autoloadPaths = [
+    __DIR__ . '/../vendor/autoload.php',       // Project dependency
+    __DIR__ . '/../../../autoload.php',         // Global install
+];
+
+$autoloaderFound = false;
+foreach ($autoloadPaths as $autoloadPath) {
+    if (file_exists($autoloadPath)) {
+        require $autoloadPath;
+        $autoloaderFound = true;
+        break;
+    }
+}
+
+if (!$autoloaderFound) {
+    fwrite(STDERR, "Could not find Composer autoloader. Run 'composer install'.\n");
+    exit(2);
+}
+
+use Lmcc\Command\AnalyzeCommand;
+use Lmcc\Command\InitCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('lm-cc', '0.1.0');
+$application->add(new AnalyzeCommand());
+$application->add(new InitCommand());
+$application->setDefaultCommand('analyze');
+$application->run();

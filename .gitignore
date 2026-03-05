@@ -1,0 +1,7 @@
+/vendor/
+composer.lock
+.phpunit.result.cache
+.phpunit.cache/
+.lm-cc-cache/
+lm-cc.yaml
+.lm-cc.yaml

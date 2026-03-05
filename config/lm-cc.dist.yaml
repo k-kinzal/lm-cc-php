@@ -1,0 +1,32 @@
+# LM-CC Configuration
+# ---
+# This file configures the lm-cc analyzer.
+# Place in project root as lm-cc.yaml or .lm-cc.yaml
+
+# LLM Backend Settings
+backend: ollama                     # ollama | openai
+model: llama3                       # LLM model name (must support instruction-following for echo prompting)
+base_url: "http://localhost:11434"  # API base URL
+# api_key: ""                       # Required for OpenAI (or set LMCC_API_KEY env)
+
+# Algorithm Parameters (from paper arXiv:2602.07882)
+alpha: 0.8                          # Weighting: 0.0=depth-only, 1.0=branching-only
+                                    # Paper recommends 0.8 based on ablation study
+# tau: 0.67                         # Fixed entropy threshold
+                                    # Omit to use dynamic percentile (recommended)
+percentile: 67.0                    # Compute tau as this percentile of entropies per file
+                                    # Paper uses 67th percentile
+
+# CI / Quality Gate
+# threshold: 50.0                   # Fail (exit 1) if any file's LM-CC exceeds this
+                                    # Remove or comment out to disable threshold checking
+
+# Output
+format: text                        # text | json
+
+# File Discovery
+exclude:                            # Glob patterns to exclude from analysis
+  - "vendor/*"
+  - "tests/*"
+  - "node_modules/*"
+  - "*.blade.php"

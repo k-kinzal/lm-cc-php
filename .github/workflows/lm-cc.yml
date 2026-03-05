@@ -1,0 +1,73 @@
+name: LM-CC Analysis
+
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        description: 'PHP version to use'
+        required: false
+        type: string
+        default: '8.2'
+      threshold:
+        description: 'LM-CC score threshold (fail if exceeded)'
+        required: false
+        type: string
+        default: ''
+      backend:
+        description: 'LLM backend (ollama or openai)'
+        required: false
+        type: string
+        default: 'ollama'
+      model:
+        description: 'LLM model name'
+        required: false
+        type: string
+        default: 'llama3'
+      paths:
+        description: 'Paths to analyze (space-separated)'
+        required: false
+        type: string
+        default: 'src/'
+    secrets:
+      LMCC_API_KEY:
+        description: 'API key for OpenAI backend'
+        required: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    services:
+      ollama:
+        image: ollama/ollama:latest
+        ports:
+          - 11434:11434
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ inputs.php-version }}
+          coverage: none
+
+      - name: Install lm-cc
+        run: composer global require lm-cc/lm-cc
+
+      - name: Pull model (Ollama)
+        if: inputs.backend == 'ollama'
+        run: |
+          curl -s http://localhost:11434/api/pull -d '{"name":"${{ inputs.model }}"}'
+
+      - name: Run LM-CC analysis
+        env:
+          LMCC_BACKEND: ${{ inputs.backend }}
+          LMCC_MODEL: ${{ inputs.model }}
+          LMCC_API_KEY: ${{ secrets.LMCC_API_KEY }}
+        run: |
+          ARGS="${{ inputs.paths }} --format=json"
+          if [ -n "${{ inputs.threshold }}" ]; then
+            ARGS="$ARGS --threshold=${{ inputs.threshold }}"
+          fi
+          lm-cc analyze $ARGS
